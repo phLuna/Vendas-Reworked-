@@ -1,0 +1,24 @@
+person:
+- pk
+- name
+- cpf
+- is_active
+- is_client
+- is_staff
+- created_at
+- updated_at
+
+product:
+- pk
+- name
+- description
+- value
+- code
+
+sell:
+- pk
+- fk_person
+- fk_product
+- quantity
+- status
+- total
