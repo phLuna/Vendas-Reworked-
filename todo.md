@@ -22,3 +22,5 @@ sell:
 - quantity
 - status
 - total
+
+#Adicionar função do SimpleAPI, para executar as funções do sistema.
