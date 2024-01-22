@@ -24,3 +24,6 @@ sell:
 - total
 
 #Adicionar função do SimpleAPI, para executar as funções do sistema!
+#Validação de CPF.
+#Validação de telefone.
+#Calcular valor total de forma automática.
