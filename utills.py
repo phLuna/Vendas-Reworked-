@@ -1,31 +1,42 @@
-from src.database.connection import DatabaseManager
-from src.controller.people import create_person, read_people, update_person, delete_person
-from src.controller.product import create_product, read_products, update_product, delete_product
-from src.controller.sell import create_sell, read_sells, update_sell, delete_sell
+def validar_cpf(cpf):
+    # Remove caracteres não numéricos do CPF
+    cpf = ''.join(filter(str.isdigit, cpf))
 
-#create_person('Josias', '51997613120', '13593464730')
+    # Verifica se o CPF tem 11 dígitos
+    if len(cpf) != 11:
+        return False
 
-#people = read_people()
-#for person in people:
-#    print(person.name)
+    # Verifica se todos os dígitos são iguais (caso contrário, não seria um CPF válido)
+    if cpf == cpf[0] * 11:
+        return False
 
-#person = update_people(1, 'Pedro Henrique')
-#print(person)
+    # Calcula o primeiro dígito verificador
+    soma = 0
+    for i in range(9):
+        soma += int(cpf[i]) * (10 - i)
+    resto = soma % 11
+    if resto < 2:
+        digito1 = 0
+    else:
+        digito1 = 11 - resto
 
-#delete_person(1)
+    # Verifica o primeiro dígito verificador
+    if digito1 != int(cpf[9]):
+        return False
 
-#-----
+    # Calcula o segundo dígito verificador
+    soma = 0
+    for i in range(10):
+        soma += int(cpf[i]) * (11 - i)
+    resto = soma % 11
+    if resto < 2:
+        digito2 = 0
+    else:
+        digito2 = 11 - resto
 
-#create_product('Água', 5.99, '5555', 2)
+    # Verifica o segundo dígito verificador
+    if digito2 != int(cpf[10]):
+        return False
 
-#products = read_products()
-#for product in products:
-#    print(product.name)
-
-#update_product(1, 'Carvão')
-
-#delete_product(1)
-
-#-----
-
-create_sell(2, 1, 3, 15.99)
+    # Se todas as verificações passarem, o CPF é válido
+    return True
