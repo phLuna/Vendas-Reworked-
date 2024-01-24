@@ -1,4 +1,6 @@
-def validar_cpf(cpf):
+import re
+
+def validar_cpf(cpf: str):
     # Remove caracteres não numéricos do CPF
     cpf = ''.join(filter(str.isdigit, cpf))
 
@@ -40,3 +42,16 @@ def validar_cpf(cpf):
 
     # Se todas as verificações passarem, o CPF é válido
     return True
+
+def validar_celular(numero: str):
+    # Defina o padrão regex para números de telefone fixo e celular no Brasil
+    padrao_celular = re.compile(r'^\(\d{2}\) 9\s?\d{4}-\d{4}$')
+
+    # Use o método match para verificar se o número corresponde a um dos padrões
+    correspondencia_celular = re.match(padrao_celular, numero)
+
+    # Se houver correspondência com qualquer um dos padrões, o número é válido
+    if correspondencia_celular:
+        return True
+    else:
+        return False

@@ -6,7 +6,8 @@ from src.controller.sell import create_sell, delete_sell
 #a = DatabaseManager()
 #a.create_tables()
 
-#create_person('Pedro', '99 99999999', 'p248.826.534.563')
+#create_person('Pedro', '24 99689855', '171.040.517-16')
+delete_person(1)
 
 
 #create_sell(1, 1, 3, 4.99)
