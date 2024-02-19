@@ -13,3 +13,5 @@ app.include_router(sells_router.router, tags=['Sells'])
 
 if __name__ == '__main__':
     uvicorn.run(app)
+
+#banana
